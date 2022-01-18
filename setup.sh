@@ -1,31 +1,31 @@
 #!/bin/bash
 
-DOTFILE_SETUP_NAME=''
-DOTFILE_SETUP_EMAIL=''
-if [ -z DOTFILE_SETUP_NAME ]
-then
-    echo "Set name for git config before continuing"
-    exit -1
-else 
-    if [ -z DOTFILE_SETUP_EMAIL ]
-    then
-        echo "Set email for git config before continuing"
-        exit -1
-    fi
-fi
+function check_make_dir() {
+    [ ! -d "$1" ] && mkdir $1
+}
 
-# Add .bashrc
-cat bashrc >> $HOME/.bashrc
+while getopts 'grb' FLAG; do
+    case "${FLAG}" in
+        g) ./git.sh ;;
+        r) ./repos.sh ;;
+        b) cat bashrc >> $HOME/.bashrc ;;
+    esac
+done
 
 # Add .vimrc
 ln ./vimrc $HOME/.vimrc
 
-# *** GIT ***
-git config --global user.name $DOTFILE_SETUP_NAME
-git config --global user.email $DOTFILE_SETUP_EMAIL
-# Add global .gitignore 
-ln ./gitignore $HOME/.gitignore
-git config --global core.excludesfile $HOME/.gitignore
-# Add a standard commit template
-ln ./gitmessage $HOME/.gitmessage
-git config --global commit.template ~/.gitmessage
+CONFIG=$HOME/.config/
+
+check_make_dir $CONFIG/i3
+ln i3-config $CONFIG/i3/config
+
+check_make_dir $CONFIG/polybar
+ln polybar-config $CONFIG/polybar/config
+
+ln alacritty.yml $HOME/.alacritty.yml
+
+
+
+
+

@@ -5,6 +5,7 @@ set autoindent
 set smarttab
 
 set colorcolumn=81,101,121
+highlight ColorColumn ctermbg=darkgrey
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -29,7 +30,25 @@ set wildmenu
 set cursorline
 set linebreak
 
+colorscheme elflord
+
 au BufNewFile,BufRead *.cl setf cool
 
-execute pathogen#infect()
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+call plug#begin('~/.vim/vim-plug')
+
+Plug 'rust-lang/rust.vim'
+
+
+call plug#end()
+
+syntax enable
+filetype plugin indent on
 
