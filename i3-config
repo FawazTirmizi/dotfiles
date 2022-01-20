@@ -186,5 +186,5 @@ default_border pixel
 hide_edge_borders smart
 
 # Set wallpaper
-exec --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/killa.png
+exec --no-startup-id feh --bg-scale $HOME/pictures/wallpapers/chicago_night.jpg
 

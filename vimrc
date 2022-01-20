@@ -45,9 +45,11 @@ endif
 call plug#begin('~/.vim/vim-plug')
 
 Plug 'rust-lang/rust.vim'
-
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
+
+
 
 syntax enable
 filetype plugin indent on
