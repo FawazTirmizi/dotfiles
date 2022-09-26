@@ -28,9 +28,9 @@ set scrolloff=5
 
 set wildmenu
 set cursorline
+set cursorcolumn
 set linebreak
 
-colorscheme elflord
 
 au BufNewFile,BufRead *.cl setf cool
 
@@ -46,11 +46,29 @@ call plug#begin('~/.vim/vim-plug')
 
 Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'FawazTirmizi/riscv.vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'APZelos/blamer.nvim'
 
 call plug#end()
 
+let g:tokyonight_style = "night"
+
+colorscheme tokyonight
+
+set updatetime=100
+
+let g:lightline = {
+            \ 'colorscheme': 'tokyonight',
+            \ }
 
 
 syntax enable
 filetype plugin indent on
+
+let g:blamer_enabled = 1
+let g:blamer_delay = 400
 

@@ -69,7 +69,9 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 ;modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem memory cpu wlan eth battery temperature date powermenu
+
+; Disabled modules: xbacklight, alsa, pulseaudio
 
 tray-position = right
 tray-padding = 2
@@ -98,6 +100,7 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
+mount-1 = /home
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
@@ -179,6 +182,8 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
+card = intel_backlight
+
 format = <label> <bar>
 label = BL
 
@@ -216,7 +221,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp59s0
+interface = wlp170s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -254,7 +259,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = " %Y-%m-%d"
 
@@ -322,36 +327,43 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
+battery = BAT1
+adapter = ACAD
+full-at = 99.66
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = "battery-prefix: "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
+format-full = <label-full>
 
-ramp-capacity-0 = capacity0
-ramp-capacity-1 = capacity1
-ramp-capacity-2 = capacity2
-ramp-capacity-foreground = ${colors.foreground-alt}
+label-charging = Charging: %percentage%%
 
-animation-charging-0 = chargin0
-animation-charging-1 = chargin1
-animation-charging-2 = chargin2
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+label-discharging = Discharging: %percentage%%
 
-animation-discharging-0 = dischargin0
-animation-discharging-1 = dischargin1
-animation-discharging-2 = dischargin2
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+label-full = Fully charged
+
+;ramp-capacity-0 = capacity0
+;ramp-capacity-1 = capacity1
+;ramp-capacity-2 = capacity2
+;ramp-capacity-foreground = ${colors.foreground-alt}
+;
+;animation-charging-0 = chargin0
+;animation-charging-1 = chargin1
+;animation-charging-2 = chargin2
+;animation-charging-foreground = ${colors.foreground-alt}
+;animation-charging-framerate = 750
+;
+;animation-discharging-0 = dischargin0
+;animation-discharging-1 = dischargin1
+;animation-discharging-2 = dischargin2
+;animation-discharging-foreground = ${colors.foreground-alt}
+;animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -376,7 +388,7 @@ format-spacing = 1
 
 label-open = .
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close = cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}

@@ -4,8 +4,9 @@ function check_clone() {
     [ ! -d "$2" ] && git clone --recurse-submodules $1 $2
 }
 
-# Packages
-
+# zsh
+sudo apt-get install -y zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Rust
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh

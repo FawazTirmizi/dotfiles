@@ -4,12 +4,6 @@
 export EDITOR=vim
 export VISUAL=vim
 
-# Alias protonvpn
-alias pvpn=protonvpn-cli
-
-# Add go to PATH
-export PATH=$PATH:/usr/local/go/bin
-
 alias py=python3
 
 . "$HOME/.cargo/env"
