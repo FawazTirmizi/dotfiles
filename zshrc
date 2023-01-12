@@ -70,7 +70,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rust sudo)
+plugins=(git sudo nix-zsh-completions nix-shell)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,7 +110,6 @@ alias screenshot='grim -g "$(slurp)"'
 
 export VISUAL=nvim
 
-alias ll='exa --long --binary --git'
 
 
 . "$HOME/.cargo/env"
@@ -118,15 +117,15 @@ alias ll='exa --long --binary --git'
 
 # Add go to PATH
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/work/toolchain/bin
 export PATH=$PATH:$HOME/work/embedded-toolchain/bin
-export PATH=$PATH:/opt/maptool/bin
 
 alias py=python3
 alias vim=nvim
 alias less=bat
 alias lock="sudo systemctl suspend; swaylock -c BEEEEF"
+alias ll='exa --long --binary --git --time-style=long-iso'
 alias grep=/home/fawaz/utils/ripgrep/target/release/rg
+alias nd="nix develop --command zsh"
 
 export PATH=$PATH:/usr/local/go/bin

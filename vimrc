@@ -52,12 +52,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'APZelos/blamer.nvim'
+Plug 'rhysd/conflict-marker.vim'
 
 call plug#end()
 
-let g:tokyonight_style = "night"
-
-colorscheme tokyonight
+colorscheme tokyonight-night
 
 set updatetime=100
 
@@ -71,4 +70,4 @@ filetype plugin indent on
 
 let g:blamer_enabled = 1
 let g:blamer_delay = 400
-
+let g:blamer_date_format = "%Y/%m/%dT%H:%M:%S %Z"
