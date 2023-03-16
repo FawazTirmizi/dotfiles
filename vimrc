@@ -53,6 +53,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'APZelos/blamer.nvim'
 Plug 'rhysd/conflict-marker.vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
 call plug#end()
 
